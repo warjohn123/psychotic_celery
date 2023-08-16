@@ -1,7 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    fetch(
+      "https://n8n.melior.ai/api/v1/workflows?active=true&tags=test,production&limit=100",
+      {
+        headers: {
+          "X-N8n-Api-Key": process.env.REACT_APP_N8N_API_KEY,
+        },
+      }
+    );
+  }, []);
   return (
     <div className="App">
       <header className="App-header">
